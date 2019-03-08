@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineData } from '../timeline/timeline.component';
-import { LineChartData } from '../line-chart/line-chart.component';
+import { TimelineDatum } from '../timeline/timeline.component';
+import { LineChartDatum } from '../line-chart/line-chart.component';
+import { HorizontalLineChartDatum } from '../horitontal-line-chart-filter/horitontal-line-chart-filter.component';
 
 @Component({
   selector: 'app-graph-list',
@@ -8,16 +9,17 @@ import { LineChartData } from '../line-chart/line-chart.component';
   styleUrls: ['./graph-list.component.scss']
 })
 export class GraphListComponent implements OnInit {
-  timelineData: TimelineData[];
+  timelineData: TimelineDatum[];
   timelineGithubLink: string;
-  lineChartData: LineChartData[];
+  lineChartData: LineChartDatum[];
   lineChartGithubLink: string;
+  horizontalLineChartData: HorizontalLineChartDatum[];
+  horizontalLineChartGithubLink: string;
 
   constructor() {
   }
 
   ngOnInit() {
-    // TODO : get correct link
     this.timelineData = [
       {
         source: 'source 1',
@@ -75,7 +77,8 @@ export class GraphListComponent implements OnInit {
           {
             startDate: new Date(2015, 7, 3),
             endDate: new Date(2017, 7, 3),
-            value: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.'
+            value: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut ' +
+              'labore et dolore magna aliquyam erat, sed diam voluptua.'
           }
         ]
       }
@@ -106,8 +109,54 @@ export class GraphListComponent implements OnInit {
         value: 2400.7
       }
     ];
-    this.timelineGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/timeline/timeline.component.ts';
-    this.lineChartGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/line-chart/line-chart.component.ts';
+    this.horizontalLineChartData = [
+      {
+        value: 2190327,
+        label: 'Paris'
+      },
+      {
+        value: 862211,
+        label: 'Marseille'
+      },
+      {
+        value: 515695,
+        label: 'Lyon'
+      },
+      {
+        value: 475438,
+        label: 'Toulouse'
+      },
+      {
+        value: 342637,
+        label: 'Nice'
+      },
+      {
+        value: 306694,
+        label: 'Nantes'
+      },
+      {
+        value: 281613,
+        label: 'Montpellier'
+      },
+      {
+        value: 279284,
+        label: 'Strasbourg'
+      },
+      {
+        value: 252040,
+        label: 'Bordeaux'
+      },
+      {
+        value: 232440,
+        label: 'Lille'
+      }
+    ];
+    this.timelineGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
+      'timeline/timeline.component.ts';
+    this.lineChartGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
+      'line-chart/line-chart.component.ts';
+    this.horizontalLineChartGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
+      'horizontal-line-chart-filter/horizontal-line-chart-filter.component.ts';
   }
 
 }

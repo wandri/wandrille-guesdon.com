@@ -14,7 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule, MatButtonToggleModule } from '@angular/material';
 import { ResumeModule } from './resume/resume.module';
 import { MessageService } from './contact/message.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';

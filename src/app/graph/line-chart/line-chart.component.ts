@@ -13,7 +13,7 @@ import { max, min, range } from 'd3-array';
 export class LineChartComponent implements OnInit, OnChanges {
 
   @Input()
-  data: LineChartData[] = [];
+  data: LineChartDatum[] = [];
 
   @Input()
   unit: string;
@@ -96,7 +96,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     this.generateTipOnMouseOver(backgroundPlan, firstPlan);
   }
 
-  private generatePoints(element, data: LineChartData[]) {
+  private generatePoints(element, data: LineChartDatum[]) {
     element
       .selectAll('.point')
       .data(data)
@@ -109,7 +109,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       .attr('fill', '#1C7C8B');
   }
 
-  private generateInvisiblePointsForTip(element, data: LineChartData[]) {
+  private generateInvisiblePointsForTip(element, data: LineChartDatum[]) {
     element
       .selectAll('.invisible-point')
       .data(data)
@@ -205,7 +205,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       .attr('font-size', 12);
   }
 
-  private generateLines(element, data: LineChartData[]) {
+  private generateLines(element, data: LineChartDatum[]) {
     for ( let i = 0; i < this.data.length - 1; i++ ) {
       element.append('line')
         .attr('x1', this.getXPosition(data[i]))
@@ -217,7 +217,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     }
   }
 
-  private getYPosition(datum: LineChartData) {
+  private getYPosition(datum: LineChartDatum) {
     return this.height - this.scaleY(datum.value);
   }
 
@@ -236,7 +236,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       });
   }
 
-  private generateTip(element: any, datum: LineChartData) {
+  private generateTip(element: any, datum: LineChartDatum) {
     const value = datum.value;
     const padding = 15;
     const formatedValue = `${Intl.NumberFormat('fr-FR', {minimumFractionDigits: 0}).format(value)} ${this.unit}`;
@@ -281,7 +281,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 }
 
-export interface LineChartData {
+export interface LineChartDatum {
   year: number;
   value: number;
 }

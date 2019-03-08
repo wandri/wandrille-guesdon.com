@@ -9,7 +9,7 @@ import { Axis, axisBottom, AxisScale, max, min, scaleTime, select, timeFormatDef
 })
 export class TimelineComponent implements AfterViewInit, OnChanges {
   @Input()
-  data: TimelineData[] = [];
+  data: TimelineDatum[] = [];
 
   private svg;
   private contentContainer;
@@ -339,7 +339,7 @@ interface Datum {
   maxPosition?: number;
 }
 
-export interface TimelineData {
+export interface TimelineDatum {
   source: string;
   data: Datum[];
 }
