@@ -1,0 +1,15 @@
+<section class="container">
+  <h2>Startups</h2>
+  <div *ngIf="startups" fxLayout="row wrap" fxLayoutAlign="center start">
+    <div *ngFor="let startup of startups" fxFlex="50%" fxFlex.lt-sm="100%" class="project-container">
+      <app-project-card [data]="startup"></app-project-card>
+    </div>
+  </div>
+  <h2>Hackathons</h2>
+  <div *ngIf="hackathons" fxLayout="row wrap" fxLayoutAlign="center start">
+    <div *ngFor="let hackathon of hackathons" fxFlex="50%" fxFlex.lt-sm="100%" class="project-container">
+      <app-project-card [data]="hackathon"></app-project-card>
+    </div>
+  </div>
+  <div class="loading" *ngIf="!hackathons"></div>
+</section>

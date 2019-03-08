@@ -1,0 +1,36 @@
+<header class="menu-component">
+  <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+    <a class="menu-logo" routerLink="/">
+      Wandrille
+    </a>
+    <div fxLayout="row" fxLayoutGap="30px">
+      <a class="menu-section menu-developer" routerLink="/cv">Resume</a>
+      <a class="menu-section menu-project" routerLink="/project">Projects</a>
+      <a class="menu-section menu-contact" routerLink="/contact">Contact</a>
+      <div class="menu-mobile">
+        <a (click)="closeOrOpenPopup()" class="item-mobile">
+          Menu
+        </a>
+        <div *ngIf="showHide" [@navMobileAnimation]="showHide" class="popup">
+          <div class="popupContainer">
+            <a (click)="closeOrOpenPopup()" class="popupCloseButton"></a>
+            <div class="popupContent" fxLayout="column" fxLayoutGap="20px">
+              <a (click)="closeOrOpenPopup()" class="item-developer" fxLayout="row" fxLayoutAlign="start center"
+                                              fxLayoutGap="10px" routerLink="/cv">
+                <img alt="resume" src="../../assets/images/menu-resume.svg">
+                <span>Resume</span>
+              </a>
+              <a (click)="closeOrOpenPopup()" class="item-project" fxLayout="row" fxLayoutAlign="start center"
+                                              fxLayoutGap="10px" routerLink="/project">
+                <img alt="project" src="../../assets/images/menu-project.svg">
+                <span>Projects</span>
+              </a>
+
+            </div>
+            <a (click)="closeOrOpenPopup()" class="menu-contact" routerLink="/contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

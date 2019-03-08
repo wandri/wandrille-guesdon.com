@@ -1,0 +1,70 @@
+<section class="container" *ngIf="project">
+  <div class="project-header" fxLayout="row" fxLayoutAlign="start start" fxLayout.lt-sm="column">
+    <img [src]="project.urlPicture" alt="Photo du projet" fxFlex="50%"  fxFlex.lt-sm="100%">
+    <div class="hackathon-presentation" fxFlex="50%" fxFlex.lt-sm="100%">
+      <h3 class="hackathon-name" *ngIf="project.name">{{project.name}} <span
+        *ngIf="project.period">({{project.period}})</span></h3>
+      <span class="description" *ngIf="project.description">{{project.description}} </span>
+      <a [href]="project.url" *ngIf="project.url" class="url-project">Link</a>
+    </div>
+  </div>
+  <div class="project-content" *ngIf="project.projectName">
+    <div class="title">
+      <h2 class="text-center">{{project.projectName}}</h2>
+    </div>
+    <div *ngIf="project.projectProblematic">
+      <p class="text-center section-title">
+        Problematic
+      </p>
+      <p class="text-center section-content">
+        {{project.projectProblematic}}
+      </p>
+    </div>
+    <div *ngIf="project.projectSolution">
+      <p class="text-center section-title">
+        Solution
+      </p>
+      <p class="text-center section-content">
+        {{project.projectSolution}}
+      </p>
+    </div>
+    <div *ngIf="project.projectRealisation">
+      <p class="text-center section-title">
+        What we have done during this hackathon
+      </p>
+      <p class="text-center section-content">
+        {{project.projectRealisation}}
+      </p>
+    </div>
+    <ng-container *ngIf="project.sections">
+      <div *ngFor="let section of project.sections">
+        <p class="text-center section-title">
+          {{section.title}}
+        </p>
+        <p class="text-center section-content">
+          {{section.description}}
+        </p>
+      </div>
+    </ng-container>
+
+    <div *ngIf="project.projectPowerpoint" class="powerpoint-project">
+      <p class="text-center section-title">
+        Presentation
+      </p>
+      <div class="powerPointIframe" id="powerpointLoader" fxLayoutAlign="center center">
+        <iframe [src]="project.projectPowerpoint" frameborder="0" allowfullscreen="true"
+                onload="document.getElementById('powerpointLoader').style.background='none';"></iframe>
+      </div>
+    </div>
+    <div *ngIf="project.award">
+      <p class="text-center section-title">
+        Award
+      </p>
+      <p class="text-center section-content">
+        {{project.projectAward}}
+      </p>
+    </div>
+  </div>
+</section>
+<div *ngIf="!project">
+</div>

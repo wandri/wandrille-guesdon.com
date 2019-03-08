@@ -1,0 +1,49 @@
+<div class="main" fxLayout="column">
+  <div fxLayout="column" fxLayout.gt-sm="row wrap">
+    <div class="grid grid-medium" fxFlex="100%" ngClass.gt-sm="grid-big">
+      <div class="grid-card main-photo-card" fxLayout="column" fxLayoutAlign="center center">
+        <h1 class="text-center">Hi, I’m Wandrille! </h1>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+          <p class="text-center">You can discover here :</p>
+          <div fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="30px">
+            <button routerLink="/cv">
+              My resume
+            </button>
+            <button routerLink="/project">
+              My projects
+            </button>
+          </div>
+          <p class="text-center">or just</p>
+          <div fxLayoutAlign="center center">
+            <button routerLink="/contact">
+              Contact me
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid" fxFlex.gt-sm="50%">
+      <div class="grid-card contact-card" fxLayoutAlign="center center">
+        <div class="contact-card-container">
+          <h2>
+            About me.
+          </h2>
+          <p>
+            I'm an innovation and entrepreneurship lover who likes the code.
+          </p>
+          <p>
+            Here is some of my projects.
+          </p>
+          <p class="more-about-me">
+            Want more ?
+            <button class="button-contact" color="primary" mat-button routerLink="/contact">Contact me.</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <a *ngFor="let project of projects" [routerLink]="project.link" class="grid" fxFlex.gt-sm="50%"
+       ngClass.lt-sm="grid-small">
+      <app-card [project]="project"></app-card>
+    </a>
+  </div>
+</div>

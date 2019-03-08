@@ -1,0 +1,123 @@
+.menu-component {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  right: 0;
+  z-index: 500;
+  height: 50px;
+  color: #FFFFFF;
+
+  a {
+    color: #FFFFFF;
+    font-weight: 500;
+    line-height: 50px;
+    transition: color .1s
+  }
+
+  a:hover {
+    color: #d9d9d9;
+  }
+
+  .menu-logo {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .menu-contact:after {
+    font-size: 16px;
+    font-weight: normal;
+    content: '\279E';
+    padding-left: 5px;
+  }
+
+  @media (max-width: 669px) {
+    .menu-section {
+      display: none;
+    }
+  }
+  @media (min-width: 670px) {
+    .menu-mobile {
+      display: none
+    }
+  }
+
+  .menu-mobile {
+    @media (min-width: 670px) {
+      display: none
+    }
+
+    .popup {
+      z-index: 800;
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      right: 10px;
+      perspective: 2000px;
+      transform-origin: 100% 0;
+
+      .popupContainer {
+        background: #fff;
+        width: 100%;
+        box-shadow: 0 50px 100px rgba(50, 50, 93, .1), 0 15px 35px rgba(50, 50, 93, .15), 0 5px 15px rgba(0, 0, 0, .1);
+        border-radius: 4px;
+        position: relative;
+        font-size: 17px;
+        line-height: 40px;
+        pointer-events: auto;
+
+        a {
+          padding-left: 20px;
+          color: #189D70;
+        }
+
+        .popupContent {
+          padding-top: 30px;
+
+          img {
+            height: 40px;
+            width: auto;
+          }
+
+          .item-developer {
+            color: #3f91ff;
+          }
+
+          .item-project {
+            color: #ff6661;
+          }
+
+          .item-contact {
+
+          }
+        }
+
+        .popupCloseButton {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 30px;
+          height: 30px;
+          font-size: 0;
+          cursor: pointer;
+
+          &:after, &:before {
+            content: '';
+            position: absolute;
+            background: #6772e5;
+            border-radius: 1px;
+            left: 14px;
+            right: 14px;
+            top: 24px;
+            height: 3px;
+            transform: rotate(45deg);
+            transition: background .1s
+          }
+
+          &:after {
+            transform: rotate(-45deg)
+          }
+        }
+      }
+    }
+  }
+}

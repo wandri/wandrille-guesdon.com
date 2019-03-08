@@ -1,0 +1,28 @@
+main {
+  position: relative;
+  min-height: 95vh;
+
+  header {
+    padding-top: 100px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(150deg, #3498DB 25%, #25abf9 100%);
+
+    h1 {
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 48px;
+      color: #FFFFFF;
+      margin: 20px 5% 20px 5%;
+    }
+
+    .subtitle {
+      color: #FFFFFF;
+      font-size: 22px;
+      line-height: 28px;
+      margin-bottom: 40px;
+    }
+  }
+
+}

@@ -1,0 +1,8 @@
+<section class="container" fxLayout="column" fxLayoutGap="30px">
+  <app-graph-card [githubLink]="timelineGithubLink" titleCard="Dynamic and responsive timeline">
+    <app-timeline [data]="timelineData"></app-timeline>
+  </app-graph-card>
+  <app-graph-card [githubLink]="timelineGithubLink" titleCard="Interactive and responsive line chart">
+    <app-line-chart [data]="lineChartData" unit="kg"></app-line-chart>
+  </app-graph-card>
+</section>

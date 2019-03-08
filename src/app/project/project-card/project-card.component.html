@@ -1,0 +1,15 @@
+<div class="card" [attr.data-before]="data?.speciality"
+     *ngIf="data.urlPicture">
+  <div class="card-header">
+    <img [src]="data?.urlPicture">
+  </div>
+  <div class="card-separator"></div>
+  <div class="card-content text-center"> {{data?.subtitle}}
+    <p class="project-name">{{data?.title}}</p>
+    <p class="project-description">{{data?.description}}</p>
+    <a class="project-link" [routerLink]="data?.id" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <span>More about the project</span>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
