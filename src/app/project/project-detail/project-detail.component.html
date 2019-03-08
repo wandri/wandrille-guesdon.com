@@ -1,0 +1,70 @@
+<section *ngIf="project" class="container">
+  <div class="project-header flex-col lg:flex-row flex justify-start content-start items-start">
+    <img [src]="project.urlPicture" alt="Photo du projet" class="w-full lg:w-1/2">
+    <div class="hackathon-presentation w-full lg:w-1/2">
+      <h3 *ngIf="project.name" class="hackathon-name">{{project.name}} <span
+        *ngIf="project.period">({{project.period}})</span></h3>
+      <span *ngIf="project.description" class="description">{{project.description}} </span>
+      <a *ngIf="project.url" [href]="project.url" class="url-project">Link</a>
+    </div>
+  </div>
+  <div *ngIf="project.projectName" class="project-content">
+    <div class="title">
+      <h2 class="text-center">{{project.projectName}}</h2>
+    </div>
+    <div *ngIf="project.projectProblematic">
+      <p class="text-center section-title">
+        Problematic
+      </p>
+      <p class="text-center section-content">
+        {{project.projectProblematic}}
+      </p>
+    </div>
+    <div *ngIf="project.projectSolution">
+      <p class="text-center section-title">
+        Solution
+      </p>
+      <p class="text-center section-content">
+        {{project.projectSolution}}
+      </p>
+    </div>
+    <div *ngIf="project.projectRealisation">
+      <p class="text-center section-title">
+        What we have done during this hackathon
+      </p>
+      <p class="text-center section-content">
+        {{project.projectRealisation}}
+      </p>
+    </div>
+    <ng-container *ngIf="project.sections">
+      <div *ngFor="let section of project.sections">
+        <p class="text-center section-title">
+          {{section.title}}
+        </p>
+        <p class="text-center section-content">
+          {{section.description}}
+        </p>
+      </div>
+    </ng-container>
+
+    <div *ngIf="project.projectPowerpoint" class="powerpoint-project">
+      <p class="text-center section-title">
+        Presentation
+      </p>
+      <div class="powerPointIframe flex justify-center content-center items-center" id="powerpointLoader">
+        <iframe [src]="project.projectPowerpoint" allowfullscreen="true"
+                onload="document.getElementById('powerpointLoader').style.background='none';"></iframe>
+      </div>
+    </div>
+    <div *ngIf="project.award">
+      <p class="text-center section-title">
+        Award
+      </p>
+      <p class="text-center section-content">
+        {{project.projectAward}}
+      </p>
+    </div>
+  </div>
+</section>
+<div *ngIf="!project">
+</div>

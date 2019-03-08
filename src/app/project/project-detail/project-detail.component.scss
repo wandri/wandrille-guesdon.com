@@ -1,0 +1,102 @@
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  * {
+    color: #3e396b;
+  }
+
+  .project-header {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    img {
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 3px;
+      border: 0;
+      padding-right: 10px;
+      width: 100%;
+    }
+
+
+    .hackathon-presentation {
+      padding-left: 10px;
+
+      .hackathon-name {
+        font-weight: 500;
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+
+      .description {
+        color: #252525;
+        line-height: 30px;
+      }
+
+      .url-project {
+        color: #6772e5;
+        padding-left: 7px;
+
+        &:after {
+          font-size: 16px;
+          font-weight: normal;
+          content: '\279E';
+          padding-left: 1px;
+        }
+      }
+    }
+  }
+
+  .project-content {
+    .title {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 32px;
+      font-weight: bold;
+      color: #ef5555;
+      line-height: 40px;
+      font-size: 30px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -.5em;
+      left: 50%;
+      height: 2px;
+      width: 30px;
+      margin-left: -15px;
+      display: block;
+      background-color: #2dde98;
+    }
+
+    .section-content {
+      margin-top: 15px;
+      margin-bottom: 10px;
+      color: #3e396b;
+    }
+
+    .powerpoint-project iframe {
+      width: 800px;
+      height: 500px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 250px;
+      }
+
+      .powerPointIframe {
+        min-height: 100px;
+      }
+    }
+  }
+
+}

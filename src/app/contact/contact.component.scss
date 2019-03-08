@@ -1,0 +1,150 @@
+main {
+  position: relative;
+  padding-bottom: 50px;
+
+  .contact-header {
+    padding-top: 100px;
+
+    h1, p {
+      padding: 0 20px;
+    }
+  }
+
+  #intro {
+    color: white;
+    position: relative;
+
+    @media (min-width: 880px) {
+      height: 300px;
+    }
+
+    @media (min-width: 670px) {
+      height: 300px;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  }
+}
+
+#contact-form {
+  position: relative;
+
+  &:before {
+    content: '';
+    top: -100%;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(150deg, #3498DB 25%, #25abf9 100%);
+  }
+
+  .social,
+  .message > p {
+    text-align: center;
+    padding: 30px 0;
+    color: #8994c6;
+  }
+
+  .social-link {
+    width: auto;
+
+    a {
+      margin: 15px;
+      height: 70px;
+    }
+  }
+
+  .github,
+  .linkedin,
+  .twitter {
+    width: 70px;
+
+    &:hover {
+      transform: scale(.95)
+    }
+
+    :active {
+      transform: scale(1)
+    }
+  }
+}
+
+.message {
+  form {
+    width: 50%;
+    @media (max-width: 670px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 670px) {
+    margin: 0 0 25px;
+    width: 100%;
+  }
+
+  .formGroup {
+    width: 100%;
+
+    input,
+    textarea {
+      margin: 10px 0 5px 0;
+      padding: 15px;
+      resize: none;
+      width: 100%;
+      @media (max-width: 670px) {
+        max-width: 250px;
+      }
+    }
+  }
+
+  .error {
+    color: #FA656C;
+    font-size: 15px;
+  }
+
+  button {
+    text-transform: uppercase;
+    margin: 0 20%;
+    color: #fff;
+    background: #3ecf8e;
+    text-shadow: 0 1px 3px rgba(36, 180, 126, .4);
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .050em;
+    transition: all .15s ease;
+
+    &:hover {
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
+    }
+
+    &:active {
+      color: #fff;
+      transform: translateY(1px);
+      box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    }
+  }
+
+  .isDisabled {
+    background: #808080;
+  }
+
+  #error-message {
+    color: red;
+    text-transform: uppercase;
+  }
+
+  #validation-message {
+    color: #25bc4b;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,38 @@
+.graph-card {
+  overflow: hidden;
+  min-height: 200px;
+  background-color: #FFFFFF;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, .07), 0 2px 9px 0 rgba(62, 57, 107, .06);
+  border-radius: 6px;
+  margin-bottom: 20px;
+
+  .card-header {
+    .title {
+      padding: 5px 5px 0 10px;
+    }
+
+    img {
+      padding: 5px 10px 0 5px;
+      height: 30px;
+      width: auto;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+  .card-separator {
+    height: 3px;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(256deg, #ff6c5f, #ff4f81) !important;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+}

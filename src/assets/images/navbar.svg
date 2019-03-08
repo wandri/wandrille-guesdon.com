@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg id="Calque_1" style="enable-background:new 32 -91.5 1024 57.7;" version="1.1" viewBox="32 -91.5 1024 57.7"
+     x="0px"
+     xml:space="preserve" xmlns="http://www.w3.org/2000/svg" y="0px">
+<rect height="57.7" id="fix-color" style="fill:#2F75A3;" width="7397.5" x="-2712" y="-91.5"/>
+  <g id="move-rect">
+	<rect height="57.7" id="move-color" style="fill:#3498DB;" width="2744" x="-2712" y="-91.5"/>
+</g>
+  <g id="Calque_4">
+	<g id="nav-text-1">
+		<text style="fill:#F5ECD9; font-family:'Montserrat-Regular'; font-size:18px;"
+          transform="matrix(1 0 0 1 112.84 -56.6199)">ABOUT ME</text>
+	</g>
+    <g id="nav-text-2">
+		<text style="fill:#F5ECD9; font-family:'Montserrat-Regular'; font-size:18px;"
+          transform="matrix(1 0 0 1 296.5869 -56.6199)">STUDIES</text>
+	</g>
+    <g id="nav-text-3">
+		<text style="fill:#F5ECD9; font-family:'Montserrat-Regular'; font-size:18px;"
+          transform="matrix(1 0 0 1 427.334 -56.6199)">STARTUP &amp; PROJECTS</text>
+	</g>
+    <g id="nav-text-4">
+		<text style="fill:#F5ECD9; font-family:'Montserrat-Regular'; font-size:18px;"
+          transform="matrix(1 0 0 1 667.4325 -56.6201)">DEVELOPMENT</text>
+	</g>
+    <g id="nav-text-5">
+		<text style="fill:#F5ECD9; font-family:'Montserrat-Regular'; font-size:18px;"
+          transform="matrix(1 0 0 1 847.8286 -56.6201)">CONTACT</text>
+	</g>
+</g>
+</svg>

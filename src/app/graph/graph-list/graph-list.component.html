@@ -1,0 +1,24 @@
+<section class="container flex-col gap-5">
+  <app-graph-card [githubLink]="timelineGithubLink" titleCard="Dynamic and responsive timeline">
+    <app-timeline [data]="timelineData"></app-timeline>
+  </app-graph-card>
+  <app-graph-card [githubLink]="lineChartGithubLink" titleCard="Interactive and responsive line chart">
+    <app-line-chart [data]="lineChartData" unit="kg"></app-line-chart>
+  </app-graph-card>
+  <app-graph-card [githubLink]="horizontalLineChartGithubLink" titleCard="Line chart with filters">
+    <div class="flex-col gap-4">
+      <div>
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle checked="true" value="label">
+            City
+          </mat-button-toggle>
+          <mat-button-toggle value="value">
+            Value
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <app-horitontal-line-chart-filter [data]="horizontalLineChartData"
+                                        [filter]="group.value"></app-horitontal-line-chart-filter>
+    </div>
+  </app-graph-card>
+</section>

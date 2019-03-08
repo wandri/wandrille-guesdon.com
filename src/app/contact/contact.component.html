@@ -1,0 +1,54 @@
+<main>
+  <div id="intro">
+    <div class="container contact-header">
+      <h1>Contact me if you want!</h1>
+      <p>And I'll try my best to get it!</p>
+    </div>
+  </div>
+  <section id="contact-form">
+    <div class="container">
+      <div class="content">
+        <div class="social" id="social-media">
+          <p>You can find me here:</p>
+          <div class="social-link flex flex-row justify-center content-center items-center">
+            <a href="https://github.com/wandri">
+              <img class="github" src="../../assets/images/github-color.svg">
+            </a>
+            <a href="https://www.linkedin.com/in/wandrille-guesdon-53a54684/">
+              <img class="linkedin" src="../../assets/images/linkedin-color.svg">
+            </a>
+          </div>
+        </div>
+        <div class="message flex flex-col justify-center content-center items-center">
+          <p>Or you can send me a message</p>
+          <p *ngIf="error && (!validation)" id="error-message">{{error}}</p>
+          <p *ngIf="validation" id="validation-message">{{validation}}</p>
+          <form (ngSubmit)="onSubmit(messageForm)" [formGroup]="messageForm"
+                class="flex flex-col justify-center content-center items-center"
+                novalidate>
+            <div class="formGroup flex flex-col justify-center content-center items-center">
+              <p *ngIf="messageForm.get('name')?.touched && !messageForm.get('name')?.valid" class="error">Minimum of 2
+                characters</p>
+              <input formControlName="name" id="form-name" name="name" placeholder="Your Name" type="text">
+            </div>
+            <div class="formGroup flex flex-col justify-center content-center items-center">
+              <p *ngIf="!messageForm.get('email')?.valid && messageForm.get('email')?.touched" class="error">A real
+                email is required!</p>
+              <input formControlName="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                     placeholder="Email" required type="text">
+            </div>
+            <div class="formGroup flex flex-col justify-center content-center items-center">
+              <p *ngIf="!messageForm.get('message')?.valid && messageForm.get('message')?.touched" class="error">Minimum
+                of 10 characters</p>
+              <textarea cols="30" formControlName="message" name="message" placeholder="Message" required
+                        rows="10"></textarea>
+            </div>
+            <button [disabled]="messageForm.invalid" [ngClass]="{'isDisabled':messageForm.invalid}" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,105 @@
+.card {
+  overflow: hidden;
+  min-height: 200px;
+  box-shadow: 0 10px 40px 0 rgba(62, 57, 107, .07), 0 2px 9px 0 rgba(62, 57, 107, .06);
+  border-radius: 6px;
+  margin-bottom: 20px;
+
+  &:before {
+    content: attr(data-before);
+    display: block;
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin: 14px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.07), 0 2px 9px 0 rgba(0, 0, 0, 0.06);
+    background-image: linear-gradient(256deg, #ff6c5f, #ff4f81);
+  }
+
+  .card-header {
+    width: 100%;
+    height: 228px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      object-fit: cover;
+      object-position: center center;
+      mix-blend-mode: soft-light;
+      transition: opacity 0.2s ease, mix-blend-mode 0.2s ease;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      will-change: opacity, mix-blend-mode;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      filter: grayscale(100%);
+      border: 0;
+    }
+  }
+
+  &:hover .card-header img {
+    mix-blend-mode: unset;
+    opacity: 1;
+    filter: none;
+  }
+
+  .card-content {
+    padding: 30px 30px 10px 30px;
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    .project-name {
+      margin-top: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .project-description {
+      color: #8994c6;
+      font-size: 15px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .project-link {
+      color: #3e396b;
+      height: 40px;
+      box-sizing: border-box;
+      position: relative;
+      transition: background .2s, box-shadow .2s;
+      margin-bottom: 0;
+      font-weight: normal;
+      text-align: center;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid transparent;
+      padding: 6px 12px;
+      font-size: 15px;
+      line-height: 1.6;
+      border-radius: 3px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+
+  .card-separator {
+    height: 5px;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(256deg, #ff6c5f, #ff4f81) !important;
+    max-width: 100%;
+  }
+
+}

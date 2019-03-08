@@ -1,0 +1,38 @@
+<header class="menu-component">
+  <div class="flex container flex-row justify-between content-center items-center">
+    <a class="menu-logo" routerLink="/">
+      Wandrille
+    </a>
+    <div class="flex flex-row gap-x-5">
+      <a class="menu-section menu-developer" routerLink="/cv">Resume</a>
+      <a class="menu-section menu-project" routerLink="/project">Projects</a>
+      <a class="menu-section menu-contact" routerLink="/contact">Contact</a>
+      <div class="menu-mobile">
+        <a (click)="closeOrOpenPopup()" class="item-mobile">
+          Menu
+        </a>
+        <div *ngIf="showHide" [@navMobileAnimation]="showHide" class="popup">
+          <div class="popupContainer">
+            <a (click)="closeOrOpenPopup()" class="popupCloseButton"></a>
+            <div class="flex popupContent flex-col gap-y-4">
+              <a (click)="closeOrOpenPopup()"
+                 class="flex item-developer flex-row justify-start content-center items-center gap-y-1"
+                 routerLink="/cv">
+                <img alt="resume" src="../../assets/images/menu-resume.svg">
+                <span>Resume</span>
+              </a>
+              <a (click)="closeOrOpenPopup()"
+                 class="flex item-project flex-row justify-start content-center items-center gap-y-1"
+                 routerLink="/project">
+                <img alt="project" src="../../assets/images/menu-project.svg">
+                <span>Projects</span>
+              </a>
+
+            </div>
+            <a (click)="closeOrOpenPopup()" class="menu-contact" routerLink="/contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

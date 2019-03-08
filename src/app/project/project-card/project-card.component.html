@@ -1,0 +1,15 @@
+<div *ngIf="data && data.urlPicture" [attr.data-before]="data.speciality"
+     class="card">
+  <div class="card-header">
+    <img [src]="data.urlPicture">
+  </div>
+  <div class="card-separator"></div>
+  <div class="card-content text-center"> {{data.subtitle}}
+    <p class="project-name">{{data.title}}</p>
+    <p class="project-description">{{data.description}}</p>
+    <a [routerLink]="data.id" class="project-link flex justify-center content-center items-center gap-1">
+      <span>More about the project</span>
+      <mat-icon aria-hidden="false" fontIcon="arrow_right_alt"></mat-icon>
+    </a>
+  </div>
+</div>

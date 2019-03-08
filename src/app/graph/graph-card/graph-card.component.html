@@ -1,0 +1,12 @@
+<div class="graph-card">
+  <div class="card-header flex justify-between content-center items-center">
+    <h2 class="title">
+      {{titleCard}}
+    </h2>
+    <a *ngIf="githubLink" [href]="githubLink"><img alt="github link" src="../../../assets/images/github_black.svg"></a>
+  </div>
+  <div class="card-separator"></div>
+  <div class="card-content">
+    <ng-content></ng-content>
+  </div>
+</div>
