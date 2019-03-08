@@ -1,3 +1,4 @@
+/* tslint:disable:space-before-function-paren */
 import { Component, ElementRef, HostListener, Input, OnChanges, OnInit } from '@angular/core';
 import { select } from 'd3-selection';
 import { scaleBand, scaleLinear } from 'd3-scale';
@@ -10,11 +11,6 @@ import { max, min, range } from 'd3-array';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit, OnChanges {
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.reloadChart();
-  }
 
   @Input()
   data: LineChartData[] = [];
@@ -29,6 +25,11 @@ export class LineChartComponent implements OnInit, OnChanges {
   private scaleY: AxisScale<number>;
   private width: number;
   private height: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.reloadChart();
+  }
 
   constructor(private container: ElementRef) {
   }
@@ -65,7 +66,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       .attr('width', widthWrapper + margin.left + margin.right)
       .attr('height', this.height + margin.top + margin.bottom);
 
-    let svgContainer = this.svg.append('g')
+    const svgContainer = this.svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
     this.contentContainer = svgContainer.append('g')
@@ -74,8 +75,8 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   private generateGraphFromData() {
 
-    let backgroundPlan = this.contentContainer.append('g').attr('class', 'background-plan');
-    let firstPlan = this.contentContainer.append('g').attr('class', 'first-plan');
+    const backgroundPlan = this.contentContainer.append('g').attr('class', 'background-plan');
+    const firstPlan = this.contentContainer.append('g').attr('class', 'first-plan');
     this.scaleX = this.generateXScale();
 
     this.generateCustomXAxis(backgroundPlan, this.scaleX);
@@ -124,8 +125,8 @@ export class LineChartComponent implements OnInit, OnChanges {
   private generatePolygonBackground(mainContent) {
     const pointCornerLeftBottom = this.getXPosition(this.data[0]) + ' ' + this.height;
     let points: string = pointCornerLeftBottom;
-    for ( let i = 0; i < this.data.length; i++ ) {
-      points += ',' + this.getXPosition(this.data[i]) + ' ' + this.getYPosition(this.data[i]);
+    for ( const datum of this.data ) {
+      points += ',' + this.getXPosition(datum) + ' ' + this.getYPosition(datum);
     }
     const pointCornerRightBottom = this.getXPosition(this.data[this.data.length - 1]) + ' ' + this.height;
     points += ',' + pointCornerRightBottom;
@@ -139,10 +140,10 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   private generateXScale() {
-    let minYear = min(this.data, datum => datum.year);
-    let maxYear = max(this.data, datum => datum.year);
+    const minYear = min(this.data, datum => datum.year);
+    const maxYear = max(this.data, datum => datum.year);
 
-    let years: string[] = range(minYear, maxYear + 1, 1).map(number => number.toString());
+    const years: string[] = range(minYear, maxYear + 1, 1).map(year => year.toString());
 
     return scaleBand()
       .domain(years)
@@ -150,8 +151,8 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   private generateYScale() {
-    let minValue = min(this.data, datum => datum.value);
-    let maxValue = max(this.data, datum => datum.value);
+    const minValue = min(this.data, datum => datum.value);
+    const maxValue = max(this.data, datum => datum.value);
 
     return scaleLinear()
       .domain([minValue * 0.9, maxValue * 1.1])
@@ -161,7 +162,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   private generateCustomXAxis(element, scaleX: AxisScale<string>) {
     this.xAxis = axisBottom(scaleX);
 
-    let xAxisElement = element.append('g')
+    const xAxisElement = element.append('g')
       .attr('class', 'scaleX axis')
       .attr('transform', `translate(0,${this.height})`);
     xAxisElement.call(this.xAxis);
@@ -221,7 +222,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   private generateTipOnMouseOver(backgroundPlan, firstPlan) {
-    let values = firstPlan.selectAll('.invisible-point');
+    const values = firstPlan.selectAll('.invisible-point');
     const self = this;
     values
       .on('mouseover', function (d) {
@@ -229,7 +230,7 @@ export class LineChartComponent implements OnInit, OnChanges {
           .style('cursor', 'pointer');
         self.generateTip(backgroundPlan, d);
       })
-      .on('mouseout', function () {
+      .on('mouseout', () => {
         backgroundPlan.selectAll('.tooltip')
           .remove();
       });
@@ -245,7 +246,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       .attr('class', 'tooltip')
       .attr('transform', `translate(${this.getXPosition(datum)},${this.getYPosition(datum)})`);
 
-    let rectangleHeight = 40;
+    const rectangleHeight = 40;
     tooltipContainer.append('rect')
       .attr('transform', `translate(1, 1)`)
       .attr('x', -tooltipWidth / 2)

@@ -8,11 +8,6 @@ import { Axis, axisBottom, AxisScale, max, min, scaleTime, select, timeFormatDef
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements AfterViewInit, OnChanges {
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.reloadChart();
-  }
-
   @Input()
   data: TimelineData[] = [];
 
@@ -23,20 +18,25 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
   private scaleX: AxisScale<Date>;
   private groupWidth = 100;
   private textSize = 10;
-  private width: number;
   private height: number;
+  private width: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.reloadChart();
+  }
 
   constructor(private container: ElementRef) {
     timeFormatDefaultLocale(
       {
-        'dateTime': '%A, le %e %B %Y, %X',
-        'date': '%d/%m/%Y',
-        'time': '%H:%M:%S',
-        'periods': ['AM', 'PM'],
-        'days': ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
-        'shortDays': ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
-        'months': ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
-        'shortMonths': ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
+        dateTime: '%A, le %e %B %Y, %X',
+        date: '%d/%m/%Y',
+        time: '%H:%M:%S',
+        periods: ['AM', 'PM'],
+        days: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+        shortDays: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+        months: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+        shortMonths: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
       }
     );
   }
@@ -82,7 +82,7 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       .attr('width', widthWrapper + margin.left + margin.right)
       .attr('height', this.height + margin.top + margin.bottom);
 
-    let svgContainer = this.svg.append('g')
+    const svgContainer = this.svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     svgContainer.append('defs')
@@ -114,16 +114,16 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
 
   private generateGraphFromData() {
     this.data.forEach(event => this.generatePosition(event));
-    let allElements: Datum[] = this.data.reduce((agg, e) => agg.concat(e.data), []);
+    const allElements: Datum[] = this.data.reduce((agg, e) => agg.concat(e.data), []);
 
-    let minDate = min(allElements, (datum: Datum) => datum.startDate);
-    let maxDate = max(allElements, (datum: Datum) => datum.endDate);
+    const minDate = min(allElements, (datum: Datum) => datum.startDate);
+    const maxDate = max(allElements, (datum: Datum) => datum.endDate);
 
     this.scaleX = scaleTime()
       .domain([minDate, maxDate])
       .range([this.groupWidth, this.width]);
 
-    let groupHeight = this.height / this.data.length;
+    const groupHeight = this.height / this.data.length;
 
     this.contentContainerBackground.selectAll('.group-background')
       .data(this.data)
@@ -136,14 +136,14 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       .attr('width', this.width + this.groupWidth)
       .attr('fill', (d, i) => i % 2 ? '#FFFFFF' : '#F3F3F3');
 
-    let xAxisElement = this.contentContainerBackground.append('g')
+    const xAxisElement = this.contentContainerBackground.append('g')
       .attr('class', 'scaleX axis')
       .attr('transform', `translate(0,${this.height})`);
 
     xAxisElement.call(this.xAxis);
     this.customXAxis(xAxisElement);
 
-    let zoomD3js = zoom()
+    const zoomD3js = zoom()
       .on('zoom', () => {
         return this.zoomFunction(xAxisElement);
       });
@@ -162,7 +162,7 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       .attr('dx', '0.5em')
       .text(d => d.source);
 
-    let groupIntervalItems = this.contentContainer.selectAll('.group-interval-item')
+    const groupIntervalItems = this.contentContainer.selectAll('.group-interval-item')
       .data(this.data)
       .enter()
       .append('g')
@@ -173,8 +173,8 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       .data(d => d.data)
       .enter();
 
-    let intervalBarHeight = 0.8 * groupHeight;
-    let intervalBarMargin = (groupHeight - intervalBarHeight) / 2;
+    const intervalBarHeight = 0.8 * groupHeight;
+    const intervalBarMargin = (groupHeight - intervalBarHeight) / 2;
     const intervalReductionRatio = 0.9;
 
     groupIntervalItems
@@ -190,7 +190,7 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       })
       .attr('y', d => {
         if ( d.position !== undefined ) {
-          let reducedIntervalMarginRatio = (1 - intervalReductionRatio) / 2;
+          const reducedIntervalMarginRatio = (1 - intervalReductionRatio) / 2;
           return ((d.position + reducedIntervalMarginRatio) * intervalBarHeight / (d.maxPosition + 1) + intervalBarMargin);
         } else {
           return intervalBarMargin;
@@ -204,7 +204,7 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
       .attr('class', 'interval-value')
       .attr('y', d => {
         if ( d.position !== undefined ) {
-          let reducedIntervalMarginRatio = (1 - intervalReductionRatio) / 2;
+          const reducedIntervalMarginRatio = (1 - intervalReductionRatio) / 2;
           return ((d.position + reducedIntervalMarginRatio) * intervalBarHeight / (d.maxPosition + 1) + intervalBarMargin)
             + this.getReducedIntervalHeight(intervalBarHeight, d, intervalReductionRatio) / 2 + this.textSize / 2;
         } else {
@@ -217,7 +217,7 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
 
   private getIntervalValueXPosition(updatedScaleX: AxisScale<Date>, data: Datum) {
     // TODO : Optimize for long text and not just Integer.
-    let value = data.value ? this.formatIntervalValue(data, updatedScaleX) : null;
+    const value = data.value ? this.formatIntervalValue(data, updatedScaleX) : null;
     if ( updatedScaleX(data.endDate) <= this.groupWidth + (1 + value.length) * this.textSize ) {
       return -1000;
     } else if ( updatedScaleX(data.startDate) <= this.groupWidth ) {
@@ -233,16 +233,16 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
 
   private generatePosition(event) {
     let dataToReturn = [];
-    let data = event.data;
+    const data = event.data;
     let maxPosition = 0;
 
     for ( let i = 0; i < data.length; i++ ) {
       const datum = data[i];
-      let intersectData = this.intersectData(datum, data);
+      const intersectData = this.intersectData(datum, data);
       if ( intersectData.length > 0 ) {
         const positions = intersectData.map(intersectDatum => intersectDatum.position).filter(position => position !== undefined);
         for ( let j = 0; j < positions.length + 1; j++ ) {
-          let isNumberNotInPositions = positions.findIndex(position => position === j) === -1;
+          const isNumberNotInPositions = positions.findIndex(position => position === j) === -1;
           if ( isNumberNotInPositions ) {
             data[i] = {...datum, position: j};
             if ( maxPosition < j ) {
@@ -258,20 +258,20 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
     }
     dataToReturn = dataToReturn.map(datum => ({
       ...datum,
-      maxPosition: maxPosition
+      maxPosition
     }));
     event.data = dataToReturn;
   }
 
   private intersectData(referenceDatum: Datum, data: Datum[]): Datum[] {
 
-    let startDate = referenceDatum.startDate;
-    let endDate = referenceDatum.endDate;
+    const startDate = referenceDatum.startDate;
+    const endDate = referenceDatum.endDate;
 
-    let intersectedData = [];
+    const intersectedData = [];
 
     data.forEach(datum => {
-      if ( datum != referenceDatum && datum.endDate > startDate && datum.startDate < endDate ) {
+      if ( datum !== referenceDatum && datum.endDate > startDate && datum.startDate < endDate ) {
         intersectedData.push(datum);
       }
     });
@@ -310,12 +310,13 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
   }
 
   private formatIntervalValue(data: Datum, scaleX: AxisScale<Date>) {
-    let value = data.value ? data.value.toString() : null;
-    let intervalWidth = Math.max(2, scaleX(data.endDate) - scaleX(data.startDate));
+    const value = data.value ? data.value.toString() : null;
+    const intervalWidth = Math.max(2, scaleX(data.endDate) - scaleX(data.startDate));
     if ( intervalWidth < 30 ) {
       return '';
     } else if ( value.length * this.textSize + 20 >= intervalWidth ) {
-      let characterToRemoveNumber = value.length - Math.floor(value.length * this.textSize + 3 * this.textSize - intervalWidth) / this.textSize;
+      const characterToRemoveNumber = value.length - Math.floor(value.length * this.textSize + 3 * this.textSize
+        - intervalWidth) / this.textSize;
       return value.slice(0, characterToRemoveNumber) + '...';
     } else {
       return value;
@@ -331,14 +332,14 @@ export class TimelineComponent implements AfterViewInit, OnChanges {
 }
 
 interface Datum {
-  startDate: Date,
-  endDate: Date,
-  value: number | string | Date | boolean,
+  startDate: Date;
+  endDate: Date;
+  value: number | string | Date | boolean;
   position?: number;
   maxPosition?: number;
 }
 
 export interface TimelineData {
-  source: string,
-  data: Datum[]
+  source: string;
+  data: Datum[];
 }
