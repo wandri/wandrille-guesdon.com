@@ -14,13 +14,27 @@
     }
   }
 
-  .copyright {
+  .copyright-left {
+    text-align: start;
+    width: 30%;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    color: #cacaca;
+    font-size: 11px;
+  }
+  .copyright-right {
     text-align: end;
     width: 30%;
     position: absolute;
     bottom: 20px;
-    right: 20px;
+    right: 10px;
     color: #cacaca;
     font-size: 11px;
+  }
+  .copyright-left,.copyright-right{
+    @media (max-width: 880px) {
+      font-size: 8px;
+    }
   }
 }
