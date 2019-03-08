@@ -151,12 +151,12 @@ export class GraphListComponent implements OnInit {
         label: 'Lille'
       }
     ];
-    this.timelineGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
+    this.timelineGithubLink = 'https://github.com/wandri/wandrille-guesdon.com/blob/master/src/app/graph/' +
       'timeline/timeline.component.ts';
-    this.lineChartGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
+    this.lineChartGithubLink = 'https://github.com/wandri/wandrille-guesdon.com/blob/master/src/app/graph/' +
       'line-chart/line-chart.component.ts';
-    this.horizontalLineChartGithubLink = 'https://github.com/wandri/wwww.wandrille-guesdon.com/blob/master/src/app/graph/' +
-      'horizontal-line-chart-filter/horizontal-line-chart-filter.component.ts';
+    this.horizontalLineChartGithubLink = 'https://github.com/wandri/wandrille-guesdon.com/blob/master/src/app/graph/' +
+      'horitontal-line-chart-filter/horitontal-line-chart-filter.component.ts';
   }
 
 }
