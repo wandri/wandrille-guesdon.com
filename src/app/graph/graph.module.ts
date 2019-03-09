@@ -5,9 +5,9 @@ import { GraphRoutingModule } from './graph-routing.module';
 import { GraphComponent } from './graph-component/graph.component';
 import { GraphListComponent } from './graph-list/graph-list.component';
 import { GraphCardComponent } from './graph-card/graph-card.component';
-import { TimelineComponent } from './timeline/timeline.component';
-import { LineChartComponent } from './line-chart/line-chart.component';
-import { HoritontalLineChartFilterComponent } from './horitontal-line-chart-filter/horitontal-line-chart-filter.component';
+import { TimelineComponent } from './graphs/timeline/timeline.component';
+import { LineChartComponent } from './graphs/line-chart/line-chart.component';
+import { HoritontalLineChartFilterComponent } from './graphs/horitontal-line-chart-filter/horitontal-line-chart-filter.component';
 import { MatButtonToggleModule } from '@angular/material';
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineDatum } from '../timeline/timeline.component';
-import { LineChartDatum } from '../line-chart/line-chart.component';
-import { HorizontalLineChartDatum } from '../horitontal-line-chart-filter/horitontal-line-chart-filter.component';
+import { TimelineDatum } from '../graphs/timeline/timeline.component';
+import { LineChartDatum } from '../graphs/line-chart/line-chart.component';
+import { HorizontalLineChartDatum } from '../graphs/horitontal-line-chart-filter/horitontal-line-chart-filter.component';
 
 @Component({
   selector: 'app-graph-list',
