@@ -481,13 +481,22 @@ export class ResumeComponent implements OnInit {
       }];
     this.frenchResume.otherExperience = [
       {
+        'company': 'Akur8',
+        'job': 'Project engineer / First product manager',
+        'description': `Build the product department as the first product manager:\n
+          • Understand, map and prioritize customer and user needs as Akur8 expanded to new markets. \n
+          • Implement product management best practices as Akur8 expanded to 100 employees and 30 engineers.`,
+        'duration': '4 years',
+        'flag': 'fr'
+      },
+      {
         'company': 'La FoncièreNumérique',
         'job': 'Lead dev / Ingénieur projet',
         'description': 'Premier développeur de l\'company, nous avons développé une plateforme de plusieurs applications ' +
           'pour du big data dans l\'immobilier (gestion des anomalies, SSO, data visualization...). Notre équipe de développement ' +
           'a atteint jusqu\'à 6 developpeurs, encadré par les methodes agiles (SCRUM). Pour  Les technologies ' +
           'utilisées sont les suivantes: Spring Boot, Kafka, Angular, Mongo, CirclCi, Rancher, Docker',
-        'duration': '18 mois',
+        'duration': '2 mois',
         'flag': 'fr'
       },
       {
@@ -570,12 +579,21 @@ export class ResumeComponent implements OnInit {
       }];
     this.germanResume.otherExperience = [
       {
+        'company': 'Akur8',
+        'job': 'Project engineer / First product manager',
+        'description': `Build the product department as the first product manager:\n
+          • Understand, map and prioritize customer and user needs as Akur8 expanded to new markets. \n
+          • Implement product management best practices as Akur8 expanded to 100 employees and 30 engineers.`,
+        'duration': '4 years',
+        'flag': 'fr'
+      },
+      {
         'company': 'La FoncièreNumérique',
         'job': 'Lead dev / Projekt Ingenieur',
         'description': 'First developer of my company, we develop a big data platform for real-estate with multiples applications ' +
           '(anomaly management, SSO, data vizualization...). The developer team (max 6 peoples) uses the SCRUM method. ' +
           'The technical stack used: Spring Boot, Kafka, Angular, Mongo, CirclCi, Rancher, Docker',
-        'duration': '18 mois',
+        'duration': '18 Jahre',
         'flag': 'fr'
       },
       {
@@ -653,12 +671,21 @@ export class ResumeComponent implements OnInit {
       }];
     this.englishResume.otherExperience = [
       {
+        'company': 'Akur8',
+        'job': 'Project engineer / First product manager',
+        'description': `Build the product department as the first product manager:\n
+          • Understand, map and prioritize customer and user needs as Akur8 expanded to new markets. \n
+          • Implement product management best practices as Akur8 expanded to 100 employees and 30 engineers.`,
+        'duration': '4 years',
+        'flag': 'fr'
+      },
+      {
         'company': 'La FoncièreNumérique',
         'job': 'Lead dev / Project Engineer',
         'description': 'First developer of my company, we develop a big data platform for real-estate with multiples applications ' +
           '(anomaly management, SSO, data vizualization...). The developer team (max 6 peoples) uses the SCRUM method. ' +
           'The technical stack used: Spring Boot, Kafka, Angular, Mongo, CirclCi, Rancher, Docker',
-        'duration': '18 mois',
+        'duration': '2 years',
         'flag': 'fr'
       },
       {

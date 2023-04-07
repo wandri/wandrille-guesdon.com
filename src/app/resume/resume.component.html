@@ -54,17 +54,18 @@
         </header>
         <section class="other-experience">
           <h2>
-            Expériences professionnelles hors construction
+            Expériences professionnelles
           </h2>
           <section *ngFor="let item of frenchResume.otherExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -72,20 +73,16 @@
               {{item.description}}
             </p>
           </section>
-        </section>
-        <section class="construction-experience">
-          <h2>
-            Expériences professionnelles dans la construction
-          </h2>
           <section *ngFor="let item of frenchResume.constructionExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -99,14 +96,15 @@
             Formations
           </h2>
           <section *ngFor="let item of frenchResume.formation" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -153,17 +151,18 @@
         </header>
         <section class="other-experience">
           <h2>
-            Experiences except construction
+            Experiences
           </h2>
           <section *ngFor="let item of englishResume.otherExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -171,20 +170,16 @@
               {{item.description}}
             </p>
           </section>
-        </section>
-        <section class="construction-experience">
-          <h2>
-            Experiences in construction
-          </h2>
           <section *ngFor="let item of englishResume.constructionExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -252,17 +247,18 @@
         </header>
         <section class="other-experience">
           <h2>
-            Berufliche Erfahrungen außerhalb des Bauingenieurwesens
+            Berufliche Erfahrungen
           </h2>
           <section *ngFor="let item of germanResume.otherExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -270,20 +266,16 @@
               {{item.description}}
             </p>
           </section>
-        </section>
-        <section class="construction-experience">
-          <h2>
-            Berufliche Erfahrungen im Bereich Bauingenieurwesen
-          </h2>
           <section *ngFor="let item of germanResume.constructionExperience" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
@@ -297,14 +289,15 @@
             Formations
           </h2>
           <section *ngFor="let item of germanResume.formation" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-
-            </time>
+            <div class="flex flex-row content-center items-center">
+              <h3>
+                <a [href]="item.link" class="flex flex-row content-center items-center">
+                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                </a>
+              </h3>
+              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
+              </time>
+            </div>
             <p *ngIf="item.job" class="job">
               <i>{{item.job}}</i>
             </p>
