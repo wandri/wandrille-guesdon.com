@@ -1,16 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+﻿import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  styleUrl: './project.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterOutlet]
 })
-export class ProjectComponent implements OnInit {
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-}
+export class ProjectComponent {}

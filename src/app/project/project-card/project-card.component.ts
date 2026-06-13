@@ -1,19 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
+﻿import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
 import {ReducedProject} from '../project.interface';
 
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
-  styleUrls: ['./project-card.component.scss']
+  styleUrl: './project-card.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, MatIcon]
 })
-export class ProjectCardComponent implements OnInit {
-
-  @Input() data: ReducedProject | undefined = undefined;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+export class ProjectCardComponent {
+  data = input<ReducedProject | undefined>(undefined);
 }

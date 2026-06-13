@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/wandrille-guesdon",
+    "public": "dist/wandrille-guesdon/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

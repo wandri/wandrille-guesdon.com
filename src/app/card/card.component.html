@@ -1,11 +1,14 @@
 <div class="grid-card flex flex-col justify-center items-center">
-  <div [ngStyle]="backgroundImageLink?{'background-image': 'url(' + backgroundImageLink + ')'}:{}"
-       class="background"></div>
+  <div [style.background-image]="backgroundStyle()" class="background"></div>
   <h2 class="grid-title text-center">
-    <span *ngIf="!logoLink">{{title}}</span>
-    <img *ngIf="logoLink" [src]="logoLink" alt="" class="project-logo">
+    @if (!logoLink()) {
+      <span>{{title()}}</span>
+    }
+    @if (logoLink()) {
+      <img [src]="logoLink()" alt="" class="project-logo">
+    }
   </h2>
   <p class="grid-sub-title text-center">
-    {{subTitle}}
+    {{subTitle()}}
   </p>
 </div>

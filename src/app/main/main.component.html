@@ -2,20 +2,20 @@
   <div class="flex flex-row flex-wrap">
     <div class="flex-1 basis-full grid grid-medium">
       <div class="flex grid-card main-photo-card flex-col justify-center content-center items-center">
-        <h1 class="text-center">Hi, I’m Wandrille! </h1>
+        <h1 class="text-center">Hi, I'm Wandrille! </h1>
         <div class="flex justify-center items-center flex-col gap-y-4">
           <p class="text-center">You can discover here :</p>
           <div class="flex justify-center items-center content-center md:flex-row max-sm:flex-col gap-4">
-            <button routerLink="/cv">
+            <button mat-button routerLink="/cv">
               My resume
             </button>
-            <button routerLink="/project">
+            <button mat-button routerLink="/project">
               My projects
             </button>
           </div>
           <p class="text-center">or just</p>
           <div class="flex justify-center items-center">
-            <button routerLink="/contact">
+            <button mat-button routerLink="/contact">
               Contact me
             </button>
           </div>
@@ -41,8 +41,10 @@
         </div>
       </div>
     </div>
-    <a *ngFor="let project of projects" [routerLink]="project.link" class="grid w-full md:w-1/2">
-      <app-card [project]="project"></app-card>
-    </a>
+    @for (project of projects; track project.link) {
+      <a [routerLink]="project.link" class="grid w-full md:w-1/2">
+        <app-card [project]="project"></app-card>
+      </a>
+    }
   </div>
 </div>

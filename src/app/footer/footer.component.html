@@ -1,7 +1,9 @@
 <div class="footer flex flex-row justify-center content-center items-center gap-4">
-  <a *ngFor="let media of medias" [href]="media.link">
-    <img [alt]="media.name" [src]="media.imageLink" class="media-logo">
-  </a>
+  @for (media of medias; track media.name) {
+    <a [href]="media.link">
+      <img [alt]="media.name" [src]="media.imageLink" class="media-logo">
+    </a>
+  }
   <div class="copyright-left">
     Copyright 2023 <br> Wandrille Guesdon
   </div>

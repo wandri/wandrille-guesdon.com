@@ -1,13 +1,12 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {inject, Injectable} from '@angular/core';
+import {push, ref} from 'firebase/database';
+import {FIREBASE_DATABASE} from '../../firebase.providers';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class MessageService {
+  private db = inject(FIREBASE_DATABASE);
 
-  constructor(private db: AngularFireDatabase) {
-  }
-
-  sendMessage(item: any) {
-    return this.db.list('emails').push(item);
+  sendMessage(item: Record<string, unknown>): Promise<unknown> {
+    return Promise.resolve(push(ref(this.db, 'emails'), item));
   }
 }

@@ -20,7 +20,7 @@
 
   .contact-card {
     background-color: #2ba77b;
-    background-image: url('../../assets/images/logo-entreprise.jpg');
+    background-image: url('/assets/images/logo-entreprise.jpg');
     background-size: 400px;
 
     .contact-card-container {
@@ -43,7 +43,7 @@
   }
 
   .main-photo-card {
-    background: url('../../assets/images/work-site.jpg') no-repeat center;
+    background: url('/assets/images/work-site.jpg') no-repeat center;
     background-size: cover;
 
     @media (min-width: 670px) {

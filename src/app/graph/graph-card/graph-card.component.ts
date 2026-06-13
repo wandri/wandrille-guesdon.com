@@ -1,21 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+﻿import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-graph-card',
   templateUrl: './graph-card.component.html',
-  styleUrls: ['./graph-card.component.scss']
+  styleUrl: './graph-card.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GraphCardComponent implements OnInit {
-  @Input()
-  githubLink: string = '';
-
-  @Input()
-  titleCard: string = '';
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
+export class GraphCardComponent {
+  githubLink = input('');
+  titleCard = input('');
 }
