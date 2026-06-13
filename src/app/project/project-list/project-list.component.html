@@ -1,15 +1,24 @@
 <section class="container">
   <h2>Startups</h2>
-  <div *ngIf="startups" class="flex-row flex-wrap flex justify-center content-start items-start">
-    <div *ngFor="let startup of startups" class="project-container w-full lg:w-1/2">
-      <app-project-card [data]="startup"></app-project-card>
+  @if (startups().length) {
+    <div class="flex-row flex-wrap flex justify-center content-start items-start">
+      @for (startup of startups(); track startup.id) {
+        <div class="project-container w-full lg:w-1/2">
+          <app-project-card [data]="startup"></app-project-card>
+        </div>
+      }
     </div>
-  </div>
+  }
   <h2>Hackathons</h2>
-  <div *ngIf="hackathons" class="flex-row flex-wrap flex justify-center content-start items-start">
-    <div *ngFor="let hackathon of hackathons" class="project-container w-full lg:w-1/2">
-      <app-project-card [data]="hackathon"></app-project-card>
+  @if (hackathons().length) {
+    <div class="flex-row flex-wrap flex justify-center content-start items-start">
+      @for (hackathon of hackathons(); track hackathon.id) {
+        <div class="project-container w-full lg:w-1/2">
+          <app-project-card [data]="hackathon"></app-project-card>
+        </div>
+      }
     </div>
-  </div>
-  <div *ngIf="!hackathons" class="loading"></div>
+  } @else {
+    <div class="loading"></div>
+  }
 </section>

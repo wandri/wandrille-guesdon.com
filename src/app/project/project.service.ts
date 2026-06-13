@@ -1,19 +1,32 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import {equalTo, onValue, orderByChild, query, ref} from 'firebase/database';
+import {FIREBASE_DATABASE} from '../../firebase.providers';
 import {Project} from './project.interface';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ProjectService {
-
-  constructor(public af: AngularFireDatabase) {
-  }
+  private db = inject(FIREBASE_DATABASE);
 
   getProjects(): Observable<Project[]> {
-    return this.af.list<Project>('/projects').valueChanges();
+    return new Observable(observer => {
+      const projectsRef = ref(this.db, '/projects');
+      return onValue(
+        projectsRef,
+        snapshot => observer.next(snapshot.val() ? Object.values(snapshot.val()) as Project[] : []),
+        error => observer.error(error)
+      );
+    });
   }
 
   getProject(url: string): Observable<Project[]> {
-    return this.af.list<Project>('/projects', ref => ref.orderByChild('id').equalTo(url)).valueChanges();
+    return new Observable(observer => {
+      const projectsRef = query(ref(this.db, '/projects'), orderByChild('id'), equalTo(url));
+      return onValue(
+        projectsRef,
+        snapshot => observer.next(snapshot.val() ? Object.values(snapshot.val()) as Project[] : []),
+        error => observer.error(error)
+      );
+    });
   }
 }

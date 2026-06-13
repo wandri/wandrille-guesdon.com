@@ -1,7 +1,5 @@
 <main>
   <style>
-    /* latin */
-
     @font-face {
       font-family: 'Montserrat-Light';
       font-style: normal;
@@ -9,9 +7,6 @@
       src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v10/IVeH6A3MiFyaSEiudUMXE8u2Q0OS-KeTAWjgkS85mDg.woff2) format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
     }
-
-    /* latin */
-
     @font-face {
       font-family: 'Montserrat-Regular';
       font-style: normal;
@@ -19,9 +14,6 @@
       src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
     }
-
-    /* latin */
-
     @font-face {
       font-family: 'Montserrat-Medium';
       font-style: normal;
@@ -29,330 +21,253 @@
       src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v10/BYPM-GE291ZjIXBWrtCwejOo-lJoxoMO4vrg2XwIHQk.woff2) format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
     }
-
   </style>
-  <div *ngIf="overlay" class="overlay">
-    <div class="loading-animation"></div>
-  </div>
+
+  @if (overlay()) {
+    <div class="overlay">
+      <div class="loading-animation"></div>
+    </div>
+  }
 
   <div class="resume-global">
     <div class="language-selection">
-      <div (click)="language='french'" class="language">
+      <div (click)="language.set('french')" class="language">
         <img [src]="getFlag('fr')" alt="french" class="flag">
       </div>
-      <div (click)="language='english'" class="language">
+      <div (click)="language.set('english')" class="language">
         <img [src]="getFlag('en')" alt="english" class="flag">
       </div>
-      <div (click)="language='german'" class="language">
+      <div (click)="language.set('german')" class="language">
         <img [src]="getFlag('de')" alt="german" class="flag">
       </div>
     </div>
-    <div class="resume-main container">
-      <article *ngIf="language === 'french'" class="resume resume-french">
-        <header>
-          <h1>Curriculum Vitae</h1>
-        </header>
-        <section class="other-experience">
-          <h2>
-            Expériences professionnelles
-          </h2>
-          <section *ngFor="let item of frenchResume.otherExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
-          </section>
-          <section *ngFor="let item of frenchResume.constructionExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
-          </section>
-        </section>
-        <section class="other-experience">
-          <h2>
-            Formations
-          </h2>
-          <section *ngFor="let item of frenchResume.formation" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
-          </section>
-        </section>
-        <section class="skills">
-          <h2>
-            Compétences
-          </h2>
-          <table style="width:100%">
-            <tr>
-              <td class="label">Français:</td>
-              <td>{{frenchResume.skill.french}}</td>
-            </tr>
-            <tr>
-              <td class="label">Anglais:</td>
-              <td>{{frenchResume.skill.english}}</td>
-            </tr>
-            <tr>
-              <td class="label">Allemand:</td>
-              <td>{{frenchResume.skill.german}}</td>
-            </tr>
-            <tr>
-              <td class="label">Bureautique:</td>
-              <td>{{frenchResume.skill.software}}</td>
-            </tr>
-            <tr>
-              <td class="label">Design:</td>
-              <td>{{frenchResume.skill.design}}</td>
-            </tr>
-            <tr>
-              <td class="label">Informatique:</td>
-              <td>{{frenchResume.skill.computer}}</td>
-            </tr>
-          </table>
-        </section>
-      </article>
-      <article *ngIf="language === 'english'" class="resume resume-english">
-        <header>
-          <h1>Curriculum Vitae</h1>
-        </header>
-        <section class="other-experience">
-          <h2>
-            Experiences
-          </h2>
-          <section *ngFor="let item of englishResume.otherExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
-          </section>
-          <section *ngFor="let item of englishResume.constructionExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
-          </section>
-        </section>
-        <section class="other-experience">
-          <h2>
-            Formations
-          </h2>
-          <section *ngFor="let item of englishResume.formation" class="resume-item">
-            <h3>
-              <a [href]="item.link">
-                {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-              </a>
-            </h3>
-            <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
 
-            </time>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
+    <div class="resume-main container">
+      @if (language() === 'french') {
+        <article class="resume resume-french">
+          <header>
+            <h1>Curriculum Vitae</h1>
+          </header>
+          <section class="other-experience">
+            <h2>Expériences professionnelles</h2>
+            @for (item of $any(frenchResume)['otherExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+            @for (item of $any(frenchResume)['constructionExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
           </section>
-        </section>
-        <section class="skills">
-          <h2>
-            Compétences
-          </h2>
-          <table style="width:100%">
-            <tr>
-              <td class="label">Français:</td>
-              <td>{{englishResume.skill.french}}</td>
-            </tr>
-            <tr>
-              <td class="label">Anglais:</td>
-              <td>{{englishResume.skill.english}}</td>
-            </tr>
-            <tr>
-              <td class="label">Allemand:</td>
-              <td>{{englishResume.skill.german}}</td>
-            </tr>
-            <tr>
-              <td class="label">Bureautique:</td>
-              <td>{{englishResume.skill.software}}</td>
-            </tr>
-            <tr>
-              <td class="label">Design:</td>
-              <td>{{englishResume.skill.design}}</td>
-            </tr>
-            <tr>
-              <td class="label">Informatique:</td>
-              <td>{{englishResume.skill.computer}}</td>
-            </tr>
-          </table>
-        </section>
-      </article>
-      <article *ngIf="language === 'german'" class="resume resume-german">
-        <header>
-          <h1>Lebenslauf</h1>
-        </header>
-        <section class="other-experience">
-          <h2>
-            Berufliche Erfahrungen
-          </h2>
-          <section *ngFor="let item of germanResume.otherExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
+          <section class="other-experience">
+            <h2>Formations</h2>
+            @for (item of $any(frenchResume)['formation']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
           </section>
-          <section *ngFor="let item of germanResume.constructionExperience" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
+          <section class="skills">
+            <h2>Compétences</h2>
+            <table style="width:100%">
+              <tr><td class="label">Français:</td><td>{{$any(frenchResume)['skill'].french}}</td></tr>
+              <tr><td class="label">Anglais:</td><td>{{$any(frenchResume)['skill'].english}}</td></tr>
+              <tr><td class="label">Allemand:</td><td>{{$any(frenchResume)['skill'].german}}</td></tr>
+              <tr><td class="label">Bureautique:</td><td>{{$any(frenchResume)['skill'].software}}</td></tr>
+              <tr><td class="label">Design:</td><td>{{$any(frenchResume)['skill'].design}}</td></tr>
+              <tr><td class="label">Informatique:</td><td>{{$any(frenchResume)['skill'].computer}}</td></tr>
+            </table>
           </section>
-        </section>
-        <section class="other-experience">
-          <h2>
-            Formations
-          </h2>
-          <section *ngFor="let item of germanResume.formation" class="resume-item">
-            <div class="flex flex-row content-center items-center">
-              <h3>
-                <a [href]="item.link" class="flex flex-row content-center items-center">
-                  <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
-                </a>
-              </h3>
-              <time>{{item.date}} <span *ngIf="item.duration"> - {{item.duration}}</span>
-              </time>
-            </div>
-            <p *ngIf="item.job" class="job">
-              <i>{{item.job}}</i>
-            </p>
-            <p class="description">
-              {{item.description}}
-            </p>
+        </article>
+      }
+
+      @if (language() === 'english') {
+        <article class="resume resume-english">
+          <header>
+            <h1>Curriculum Vitae</h1>
+          </header>
+          <section class="other-experience">
+            <h2>Experiences</h2>
+            @for (item of $any(englishResume)['otherExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+            @for (item of $any(englishResume)['constructionExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
           </section>
-        </section>
-        <section class="skills">
-          <h2>
-            Besondere Kenntnisse
-          </h2>
-          <table style="width:100%">
-            <tr>
-              <td class="label">Französisch:</td>
-              <td>{{germanResume.skill.french}}</td>
-            </tr>
-            <tr>
-              <td class="label">English:</td>
-              <td>{{germanResume.skill.english}}</td>
-            </tr>
-            <tr>
-              <td class="label">Deutsch:</td>
-              <td>{{germanResume.skill.german}}</td>
-            </tr>
-            <tr>
-              <td class="label">Informatik:</td>
-              <td>{{germanResume.skill.software}}</td>
-            </tr>
-            <tr>
-              <td class="label">Design:</td>
-              <td>{{germanResume.skill.design}}</td>
-            </tr>
-            <tr>
-              <td class="label">Computer:</td>
-              <td>{{germanResume.skill.computer}}</td>
-            </tr>
-          </table>
-        </section>
-      </article>
+          <section class="other-experience">
+            <h2>Formations</h2>
+            @for (item of $any(englishResume)['formation']; track item.company) {
+              <section class="resume-item">
+                <h3>
+                  <a [href]="item.link">
+                    {{item.company}} <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                  </a>
+                </h3>
+                <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+          </section>
+          <section class="skills">
+            <h2>Compétences</h2>
+            <table style="width:100%">
+              <tr><td class="label">Français:</td><td>{{$any(englishResume)['skill'].french}}</td></tr>
+              <tr><td class="label">Anglais:</td><td>{{$any(englishResume)['skill'].english}}</td></tr>
+              <tr><td class="label">Allemand:</td><td>{{$any(englishResume)['skill'].german}}</td></tr>
+              <tr><td class="label">Bureautique:</td><td>{{$any(englishResume)['skill'].software}}</td></tr>
+              <tr><td class="label">Design:</td><td>{{$any(englishResume)['skill'].design}}</td></tr>
+              <tr><td class="label">Informatique:</td><td>{{$any(englishResume)['skill'].computer}}</td></tr>
+            </table>
+          </section>
+        </article>
+      }
+
+      @if (language() === 'german') {
+        <article class="resume resume-german">
+          <header>
+            <h1>Lebenslauf</h1>
+          </header>
+          <section class="other-experience">
+            <h2>Berufliche Erfahrungen</h2>
+            @for (item of $any(germanResume)['otherExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+            @for (item of $any(germanResume)['constructionExperience']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+          </section>
+          <section class="other-experience">
+            <h2>Formations</h2>
+            @for (item of $any(germanResume)['formation']; track item.company) {
+              <section class="resume-item">
+                <div class="flex flex-row content-center items-center">
+                  <h3>
+                    <a [href]="item.link" class="flex flex-row content-center items-center">
+                      <span>{{item.company}}</span> <img [alt]="item.flag" [src]="getFlag(item.flag)" class="flag">
+                    </a>
+                  </h3>
+                  <time>{{item.date}} @if (item.duration) { - {{item.duration}} }</time>
+                </div>
+                @if (item.job) {
+                  <p class="job"><i>{{item.job}}</i></p>
+                }
+                <p class="description">{{item.description}}</p>
+              </section>
+            }
+          </section>
+          <section class="skills">
+            <h2>Besondere Kenntnisse</h2>
+            <table style="width:100%">
+              <tr><td class="label">Französisch:</td><td>{{$any(germanResume)['skill'].french}}</td></tr>
+              <tr><td class="label">English:</td><td>{{$any(germanResume)['skill'].english}}</td></tr>
+              <tr><td class="label">Deutsch:</td><td>{{$any(germanResume)['skill'].german}}</td></tr>
+              <tr><td class="label">Informatik:</td><td>{{$any(germanResume)['skill'].software}}</td></tr>
+              <tr><td class="label">Design:</td><td>{{$any(germanResume)['skill'].design}}</td></tr>
+              <tr><td class="label">Computer:</td><td>{{$any(germanResume)['skill'].computer}}</td></tr>
+            </table>
+          </section>
+        </article>
+      }
     </div>
   </div>
-  <figure id="skrollr-body">
-    <div class="skrollable skrollable-between" id="scene1">
-    </div>
-    <div class="skrollable skrollable-between" id="scene2">
-    </div>
-    <div class="skrollable skrollable-between" id="scene3">
-    </div>
-    <div class="skrollable skrollable-between" id="scene4">
-    </div>
-    <div class="skrollable skrollable-between" id="scene5">
-    </div>
-    <div id="navbar-footer">
 
-    </div>
+  <figure id="skrollr-body">
+    <div class="skrollable skrollable-between" id="scene1"></div>
+    <div class="skrollable skrollable-between" id="scene2"></div>
+    <div class="skrollable skrollable-between" id="scene3"></div>
+    <div class="skrollable skrollable-between" id="scene4"></div>
+    <div class="skrollable skrollable-between" id="scene5"></div>
+    <div id="navbar-footer"></div>
   </figure>
 </main>
